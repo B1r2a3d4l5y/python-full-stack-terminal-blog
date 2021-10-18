@@ -3,6 +3,10 @@ from database import Database
 import datetime
 
 
+def from_blog():
+    return []
+
+
 class Post(object):
 
     def __init__(self, blog_id, title, content, author, date=datetime.datetime.utcnow(), id=None):
@@ -30,7 +34,7 @@ class Post(object):
     @classmethod
     def from_mongo(cls, id):
         post_data = Database.find_one(collection='posts', query={'id': id})
-        return cls(blog_id=post_data['blog'],
+        return cls(bog_id=post_data['blog'],
                    title=post_data['title'],
                    content=post_data['content'],
                    author=post_data['author'],
@@ -39,4 +43,4 @@ class Post(object):
 
     @staticmethod
     def from_blog(id):
-        return [post for post in Database.find_one(collection='posts', query={'blog_id': id})]
+        return [post for post in Database.find(collection='posts', query={'blog_id': id})]
