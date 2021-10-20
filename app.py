@@ -1,4 +1,4 @@
-rom database import Database
+from database import Database
 from models.blog import Blog
 
 Database.initialize()
