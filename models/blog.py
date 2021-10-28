@@ -17,7 +17,7 @@ class Blog(object):
         content = input("Enter post content: ")
         date = input("Enter post date or leave blank for today(in format DDMMYYYY): ")
         if date == "":
-            datetime.datetime.utcnow()
+            date = datetime.datetime.utcnow()
         else:
             date = datetime.datetime.strptime(date, "%d%m%Y")
             post = Post(blog_id=self.id,
@@ -25,7 +25,6 @@ class Blog(object):
                         content=content,
                         author=self.author,
                         date=date)
-
             post.save_to_mongo()
 
     def get_posts(self):
