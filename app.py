@@ -5,12 +5,13 @@ Database.initialize()
 
 blog = Blog(author="Brad",
             title="Sample title",
-            description="Sample description")
+            description="Sample description",
+            id="135")
 
 blog.new_post()
 
 blog.save_to_mongo()
 
-from_database = Blog.from_mongo(blog.id)
+
 
 print(blog.get_posts())
