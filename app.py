@@ -1,17 +1,9 @@
 from database import Database
-from models.blog import Blog
+from menu import Menu
 
 Database.initialize()
 
-blog = Blog(author="Brad",
-            title="Sample title",
-            description="Sample description",
-            id="135")
-
-blog.new_post()
-
-blog.save_to_mongo()
+menu = Menu()
 
 
-
-print(blog.get_posts())
+menu.run_menu()
