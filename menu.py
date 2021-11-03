@@ -9,7 +9,7 @@ class Menu(object):
         if self._user_has_account():
             print("Welcome back {}".format(self.user))
         else:
-            self._prompt_user_for_accont()
+            self._prompt_user_for_account()
 
     def _user_has_account(self):
         blog = Database.find_one('blogs', {'author': self.user})
@@ -42,8 +42,8 @@ class Menu(object):
     def _list_blogs(self):
         blogs = Database.find(collection='blogs',
                               query={})
-        for blogs in blogs:
-            print("ID : {}, Title : {], Author : {}".format(blog['id'], blog['title'], blog['title']))
+        for blog in blogs:
+            print("ID : {}, Title : {}, Author : {}".format(blog['id'], blog['title'], blog['author']))
 
     def _view_blog(self):
         blog_to_see = input("Enter the ID of the blog that tou would like to read: ")
